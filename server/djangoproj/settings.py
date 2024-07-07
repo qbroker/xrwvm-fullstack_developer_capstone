@@ -28,6 +28,8 @@ SECRET_KEY =\
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+# Change ALLOWED_HOSTS and CSRF
+
 ALLOWED_HOSTS = []
 CSRF_TRUSTED_ORIGINS = []
 
@@ -58,10 +60,13 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'djangoproj.urls'
 
+# Changed DIRS for the front-end statis files to find
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR,'frontend/static')
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -134,5 +139,7 @@ MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-STATICFILES_DIRS = []
-
+# Added path to the static files
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR,'frontend/static')
+]
