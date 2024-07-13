@@ -28,7 +28,7 @@ SECRET_KEY =\
 DEBUG = True
 
 # Change ALLOWED_HOSTS and CSRF
-URL='https://bknlgo-8000.theianext-0-labs-prod-misc-tools-us-east-0.proxy.cognitiveclass.ai'
+URL='https://bknlgo-8000.theiadockernext-1-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai'
 ALLOWED_HOSTS=['localhost',URL]
 CSRF_TRUSTED_ORIGINS=[URL]
 
