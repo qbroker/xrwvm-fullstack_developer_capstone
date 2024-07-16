@@ -87,9 +87,9 @@ def get_cars(request):
     return JsonResponse({"CarModels":cars})
 
 
-# # Update the `get_dealerships` view to render the index page with
-# a list of dealerships
-#Update the `get_dealerships` render list of dealerships all by default, particular state if state is passed
+# List the dealerships
+# It will use the get_request implemented in the restapis.py
+# passing the /fetchDealers endpoint, route is found in djangoapp/urls.py
 def get_dealerships(request, state="All"):
     if(state == "All"):
         endpoint = "/fetchDealers"
@@ -98,7 +98,7 @@ def get_dealerships(request, state="All"):
     dealerships = get_request(endpoint)
     return JsonResponse({"status":200,"dealers":dealerships})
 
-# Create a `get_dealer_reviews` view to render the reviews of a dealer
+# Get dealer reviews, route is found in djangoapp/urls.py
 def get_dealer_reviews(request, dealer_id):
     # if dealer id has been provided
     if(dealer_id):
@@ -113,7 +113,7 @@ def get_dealer_reviews(request, dealer_id):
         return JsonResponse({"status":400,"message":"Bad Request"})
 
 
-# Create a `get_dealer_details` view to render the dealer details
+# Get dealer details, route is found in djangoapp/urls.py
 def get_dealer_details(request, dealer_id):
     if(dealer_id):
         endpoint = "/fetchDealer/"+str(dealer_id)
