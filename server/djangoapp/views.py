@@ -18,7 +18,7 @@ from .restapis import get_request, analyze_review_sentiments, post_review # impo
 # Get an instance of a logger
 logger = logging.getLogger(__name__)
 
-# Create a `login_request` view to handle sign in request
+# login_user view to handle sign in
 @csrf_exempt
 def login_user(request):
     # Get username and password from request.POST dictionary
@@ -34,8 +34,8 @@ def login_user(request):
         data = {"userName": username, "status": "Authenticated"}
     return JsonResponse(data)
 
-# `logout_request` view to handle sign out request
-# It does not work on Firefox, but Chromium it does, see notes in instruction
+# logout_request view to handle sign out request
+# It does not work on Firefox sometimes, but Chromium it does, see notes in instruction
 def logout_request(request):
     username = str(request.user)
     data = {"username": username}
@@ -74,7 +74,7 @@ def registration(request):
         data = {"userName":username,"error":"Already Registered"}
         return JsonResponse(data)
 
-
+# Fill the DB with car data
 def get_cars(request):
     count = CarMake.objects.filter().count()
     print(count)

@@ -1,5 +1,6 @@
 from .models import CarMake, CarModel
 
+# Data to populate the DB
 def initiate():
     car_make_data = [
         {"name":"NISSAN", "description":"Great cars. Japanese technology"},
