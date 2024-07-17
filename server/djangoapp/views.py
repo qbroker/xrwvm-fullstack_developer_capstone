@@ -1,10 +1,10 @@
-from django.shortcuts import render
-from django.http import HttpResponseRedirect, HttpResponse
+# from django.shortcuts import render  // r_a_l
+# from django.http import HttpResponseRedirect, HttpResponse // r_a_l
 from django.contrib.auth.models import User
-from django.shortcuts import get_object_or_404, render, redirect
-from django.contrib.auth import logout
-from django.contrib import messages
-from datetime import datetime
+# from django.shortcuts import get_object_or_404, render, redirect // r_a_l
+# from django.contrib.auth import logout // r_a_l
+# from django.contrib import messages  // r_a_l
+# from datetime import datetime  // r_a_l
 
 from django.http import JsonResponse
 from django.contrib.auth import login, authenticate
@@ -12,8 +12,9 @@ import logging
 import json
 from django.views.decorators.csrf import csrf_exempt
 from .models import CarMake, CarModel
-from .populate import initiate # if empty fill DB
-from .restapis import get_request, analyze_review_sentiments, post_review # import methods from restapis.py
+from .populate import initiate  # if empty fill DB
+# import methods from restapis.py
+from .restapis import get_request, analyze_review_sentiments, post_review
 
 # Get an instance of a logger
 logger = logging.getLogger(__name__)
@@ -61,7 +62,7 @@ def registration(request):
         # Check if user already exists
         User.objects.get(username=username)
         username_exist = True
-    except:
+    except Exception:
         # If not, simply log this is a new user
         logger.debug("{} is new user".format(username))
 
@@ -140,7 +141,7 @@ def add_review(request):
         try:
             response = post_review(data)
             return JsonResponse({"status": 200})
-        except:
+        except Exception:
             return JsonResponse({"status": 401, "message": "Error in posting review"})
     else:
         return JsonResponse({"status": 403, "message": "Unauthorized"})
