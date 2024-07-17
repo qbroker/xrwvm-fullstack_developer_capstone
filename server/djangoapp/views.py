@@ -35,12 +35,14 @@ def login_user(request):
         data = {"userName": username, "status": "Authenticated"}
     return JsonResponse(data)
 
+
 # logout_request view to handle sign out request
-# It does not work on Firefox sometimes, but Chromium it does, see notes in instruction
+# Fails on Firefox sometimes, but Chromium it does, see notes in instruction
 def logout_request(request):
     username = str(request.user)
     data = {"username": username}
     return JsonResponse(data)
+
 
 # `registration` view to handle sign up request
 @csrf_exempt
@@ -66,7 +68,11 @@ def registration(request):
     # If it is a new user
     if not username_exist:
         # Create user in auth_user table
-        user = User.objects.create_user(username=username, first_name=first_name, last_name=last_name,password=password, email=email)
+        user = User.objects.create_user(username=username,
+                                        first_name=first_name,
+                                        last_name=last_name,
+                                        password=password,
+                                        email=email)
         # Login the user and redirect to list page
         login(request, user)
         data = {"userName": username, "status": "Authenticated"}
@@ -74,6 +80,7 @@ def registration(request):
     else:
         data = {"userName": username, "error": "Already Registered"}
         return JsonResponse(data)
+
 
 # Fill the DB with car data
 def get_cars(request):
@@ -99,6 +106,7 @@ def get_dealerships(request, state="All"):
         endpoint = "/fetchDealers/"+state
     dealerships = get_request(endpoint)
     return JsonResponse({"status": 200, "dealers": dealerships})
+
 
 # Get dealer reviews, route is found in djangoapp/urls.py
 def get_dealer_reviews(request, dealer_id):
