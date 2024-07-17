@@ -14,7 +14,8 @@ from django.views.decorators.csrf import csrf_exempt
 from .models import CarMake, CarModel
 from .populate import initiate  # if empty fill DB
 # import methods from restapis.py
-from .restapis import get_request, analyze_review_sentiments, post_review
+# post_review // r_a_l
+from .restapis import get_request, analyze_review_sentiments
 
 # Get an instance of a logger
 logger = logging.getLogger(__name__)
@@ -137,7 +138,7 @@ def get_dealer_details(request, dealer_id):
 # User must be authenticated to add a review
 def add_review(request):
     # if (request.user.is_anonymous == False):
-    if not request.user.is_anonymous:   
+    if not request.user.is_anonymous:
         # data = json.loads(request.body)  // r_a_l
         try:
             # response = post_review(data)  // r_a_l
