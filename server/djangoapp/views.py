@@ -1,10 +1,10 @@
-# from django.shortcuts import render  // r_a_l
-# from django.http import HttpResponseRedirect, HttpResponse // r_a_l
+from django.shortcuts import render  #// r_a_l
+from django.http import HttpResponseRedirect, HttpResponse #// r_a_l
 from django.contrib.auth.models import User
-# from django.shortcuts import get_object_or_404, render, redirect // r_a_l
-# from django.contrib.auth import logout // r_a_l
-# from django.contrib import messages  // r_a_l
-# from datetime import datetime  // r_a_l
+from django.shortcuts import get_object_or_404, render, redirect # // r_a_l
+from django.contrib.auth import logout #// r_a_l
+from django.contrib import messages  #// r_a_l
+from datetime import datetime  #// r_a_l
 
 from django.http import JsonResponse
 from django.contrib.auth import login, authenticate
@@ -13,9 +13,8 @@ import json
 from django.views.decorators.csrf import csrf_exempt
 from .models import CarMake, CarModel
 from .populate import initiate  # if empty fill DB
-# import methods from restapis.py
-# post_review // r_a_l
-from .restapis import get_request, analyze_review_sentiments
+# import methods from restapis.py,  #// r_a_l, this needs to be linted later
+from .restapis import get_request, analyze_review_sentiments, post_review
 
 # Get an instance of a logger
 logger = logging.getLogger(__name__)
@@ -137,11 +136,11 @@ def get_dealer_details(request, dealer_id):
 
 # User must be authenticated to add a review
 def add_review(request):
-    # if (request.user.is_anonymous == False):
-    if not request.user.is_anonymous:
-        # data = json.loads(request.body)  // r_a_l
+    if (request.user.is_anonymous == False):
+    # if not request.user.is_anonymous:
+        data = json.loads(request.body) # // r_a_l
         try:
-            # response = post_review(data)  // r_a_l
+            response = post_review(data) # // r_a_l
             return JsonResponse({"status": 200})
         except Exception:
             return JsonResponse({"status": 401,

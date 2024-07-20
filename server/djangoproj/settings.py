@@ -28,8 +28,7 @@ SECRET_KEY =\
 DEBUG = True
 
 # Change ALLOWED_HOSTS and CSRF
-URL = 'https://bknlgo-8000.\
-       theiadockernext-0-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai'
+URL = 'https://bknlgo-8000.theiadockernext-1-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai'
 ALLOWED_HOSTS = ['localhost', URL]
 CSRF_TRUSTED_ORIGINS = [URL]
 
@@ -95,11 +94,11 @@ DATABASES = {
 }
 
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME':
-        'django.contrib.auth.password_validation.\
-        UserAttributeSimilarityValidator',
-    },
+    # {
+    #     'NAME':
+    #     'django.contrib.auth.password_validation.\
+    #     UserAttributeSimilarityValidator',
+    # },
     {
         'NAME':
         'django.contrib.auth.password_validation.MinimumLengthValidator',
